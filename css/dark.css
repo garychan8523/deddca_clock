@@ -53,58 +53,42 @@ button:focus {
 }
 
 .color_light_btn {
-position: absolute;
-z-index: 3;
-bottom: 35px;
-right: 40px;
-width: 25px;
-height: 25px;
-background: #ecf0f5;
-border-style: solid;
-border-color: #9fb3cc;
-border-width: 3px;
--webkit-transition: 0.4s;
-transition: 0.4s;
+  position: absolute;
+  z-index: 50;
+  bottom: 33px;
+  right: 25px;
+  width: 25px;
+  height: 25px;
+  cursor:pointer;
+  opacity: 0.6;
+
+  background: #ecf0f5;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #9fb3cc;
+  border-width: 3px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .color_light_btn:hover {
-opacity: 0.6;
+  border-color: #c0cdde;
+  opacity: 1;
 }
 
 .color_dark_btn {
-position: absolute;
-z-index: 3;
-bottom: 35px;
-right: 90px;
-width: 25px;
-height: 25px;
-background: #797979;
-border-style: solid;
-border-color: #c0c0c0;
-border-width: 3px;
--webkit-transition: 0.4s;
-transition: 0.4s;
-}
-
-.color_dark_btn:hover {
-opacity: 0.6;
+  display: none;
 }
 
 .fullscreen_btn {
-position: absolute;
+position: fixed;
 z-index: 3;
-bottom: 35px;
-right: 40px;
-width: 25px;
-height: 25px;
-font-size: 150%;
--webkit-transition: 0.4s;
-transition: 0.4s;
-display: none;
-}
-
-.fullscreen_btn:hover {
-opacity: 0.6;
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
 }
 
 header {
@@ -119,7 +103,7 @@ header h1 {
   margin: 0 auto;
 }
 
-.tcontent {
+.content {
   position: relative;
   text-align: center;
   width: 100%;
@@ -142,6 +126,40 @@ header h1 {
   font-size: 60%;
 }
 
+#message-remind{
+  display: none;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  bottom: 20%;
+  margin: : 0 auto;
+  font-family: sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 100;
+  color: #666;
+  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 24px;
+  overflow: auto;
+
+  -webkit-animation: fadeOut 2s forwards;
+  animation: fadeOut 2s forwards;
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+}
+@-webkit-keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
   @media only screen and (min-width: 500px){
   .time {font-size: 250%;}
   .date {font-size: 100%;}
@@ -156,8 +174,8 @@ header h1 {
   .time {font-size: 250%;}
   .date {font-size: 100%;}
   .fullscreen_btn {display: initial;}
-  .color_light_btn {right: 90px;}
-  .color_dark_btn {right: 130px;}
+  .color_light_btn {right: 40px;}
+  .color_dark_btn {display: none; right: 40px;}
   }
 
 }

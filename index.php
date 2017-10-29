@@ -18,26 +18,25 @@ if(!isset($_COOKIE['deddca_theme']))
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
         <title>dedd.ca</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="assets/favicon.png" />
         <link href='http://fonts.googleapis.com/css?family=Work+Sans:400,600,700' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="reset.css">
-		<link rel="stylesheet" title="light" href="style.css">
-        <link rel="alternate stylesheet" title="dark" href="t_dark.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" title="light" href="css/style.css">
+        <link rel="alternate stylesheet" title="dark" href="css/dark.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-        <script src="modernizr.js"></script>
+        <script src="js/modernizr.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="js/lettering.js"></script>
 	</head>
 
 	<body onload="set_style_from_cookie();">
-
     <div class="color_light_btn" onclick="switch_style('light');return false;" name="theme" id="light"></div>
     <div class="color_dark_btn" onclick="switch_style('dark');return false;" name="theme" id="dark"></div>
-    <div class='fullscreen_btn' onclick="toggleFull();" id='fullscreen-button'><i class='fa fa-expand'></i></div>
+    <div class='fullscreen_btn' ondblclick="toggleFull();" id='fullscreen-button'></div>
 
  <script>
      var now = new Date(<?php echo time() * 1000 ?>);
-
      setInterval(updateTime, 1000);
 
      function addZero(i)
@@ -61,7 +60,9 @@ if(!isset($_COOKIE['deddca_theme']))
          	var datevalue = now.toDateString();
 
              //clock.innerHTML = "<div class='time'>" + h + ":" + m + ":" + s + "</div>" + "<br>" + "<div class='date'>" + date + "</div>";	//adjust to suit
-             date.innerHTML = datevalue ;
+             if(date.innerHTML != datevalue){
+                date.innerHTML = datevalue ;
+             }
          }
      } 
  </script>
@@ -77,30 +78,27 @@ setInterval(timer, 500);
 $(document).ready(function (){
     timer();
     $("#displayDate").load("date.php");
+    document.getElementById('message-remind').style.display = 'block';
 });
 
 </script>
 
 <div class="filter"></div>
 
-<div class="tcontent">
-    <span id='displayTime' class="time">
+<div class="content">
+    <div id='displayTime' class="time">
         <div style="opacity: 0.3;">Loading</div>
-    </span>
+    </div>
 
     <span id='displayDate' class='date'><br></span>
 
+    <span id='message-remind'>Double click to toggle full screen</span>
 </div>
 
 <script>
-// *** TO BE CUSTOMISED ***
-
 var style_cookie_name = 'deddca_theme';
 var style_cookie_duration = 30;
 var style_domain = "deddca";
-
-// *** END OF CUSTOMISABLE SECTION ***
-// You do not need to customise anything below this line
 
 function set_style_from_cookie()
 {
@@ -181,9 +179,6 @@ function cancelFullScreen(el) {
         function toggleFull() {
             var elem = document.documentElement; // Make the body go full screen.
             var isInFullScreen = (document.fullScreenElement && document.fullScreenElement !== null) ||  (document.mozFullScreen || document.webkitIsFullScreen);
-
-            //$(".color_light_btn").toggle(1000);
-            //$(".color_dark_btn").toggle(1000);
 
             if (isInFullScreen) {
                 cancelFullScreen(document);
