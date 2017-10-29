@@ -1,1 +1,1 @@
-"# deddca_clock" 
+# deddca_clock
