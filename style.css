@@ -1,0 +1,163 @@
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Work Sans", sans-serif;
+  color: #314d5d;
+  background-color: #f2f2f2;
+}
+
+a {
+  color: #de5b48;
+  text-decoration: none;
+}
+
+img, svg {
+  max-width: 100%;
+}
+
+.filter{
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+.color_light_btn {
+position: absolute;
+z-index: 3;
+bottom: 35px;
+right: 40px;
+width: 25px;
+height: 25px;
+background: #ecf0f5;
+border-style: solid;
+border-color: #9fb3cc;
+border-width: 3px;
+-webkit-transition: 0.4s;
+transition: 0.4s;
+}
+
+.color_light_btn:hover {
+opacity: 0.6;
+}
+
+.color_dark_btn {
+position: absolute;
+z-index: 3;
+bottom: 35px;
+right: 90px;
+width: 25px;
+height: 25px;
+background: #797979;
+border-style: solid;
+border-color: #c0c0c0;
+border-width: 3px;
+-webkit-transition: 0.4s;
+transition: 0.4s;
+}
+
+.color_dark_btn:hover {
+opacity: 0.6;
+}
+
+.fullscreen_btn {
+position: absolute;
+z-index: 3;
+bottom: 35px;
+right: 40px;
+width: 25px;
+height: 25px;
+font-size: 150%;
+-webkit-transition: 0.4s;
+transition: 0.4s;
+display: none;
+}
+
+.fullscreen_btn:hover {
+opacity: 0.6;
+}
+
+header {
+  height: 80px;
+  position: relative;
+  padding-top: 40px;
+}
+
+header h1 {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tcontent {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin: : 0 auto;
+  height: 100%;
+  font-size: 250%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  overflow: auto;
+}
+
+.time {
+  font-size: 150%;
+}
+
+.date {
+  font-size: 60%;
+}
+
+  @media only screen and (min-width: 500px){
+  .time {font-size: 250%;}
+  .date {font-size: 100%;}
+  }
+
+  @media only screen and (min-width: 768px){
+  .time {font-size: 250%;}
+  .date {font-size: 100%;}
+  }
+
+  @media only screen and (min-width: 1300px){
+  .time {font-size: 250%;}
+  .date {font-size: 100%;}
+  .fullscreen_btn {display: initial;}
+  .color_light_btn {right: 90px;}
+  .color_dark_btn {right: 130px;}
+  }
+
+}
