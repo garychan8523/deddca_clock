@@ -28,13 +28,15 @@ img, svg {
 }
 
 .filter{
-  z-index: 1;
+  z-index: 50;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   display: inline-block;
+  background: black;
+  opacity: 0;
 }
 
 .color_light_btn {
@@ -43,7 +45,7 @@ img, svg {
 
 .color_dark_btn {
   position: absolute;
-  z-index: 50;
+  z-index: 100;
   bottom: 33px;
   right: 25px;
   width: 25px;
@@ -105,6 +107,12 @@ header h1 {
 
 .time {
   font-size: 150%;
+}
+
+.time > span {
+  display: inline-block;
+  width: .55em;
+  text-align: center;
 }
 
 .date {

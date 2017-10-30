@@ -37,7 +37,7 @@ if(!isset($_COOKIE['deddca_theme']))
 
  <script>
      var now = new Date(<?php echo time() * 1000 ?>);
-     setInterval(updateTime, 1000);
+     //setInterval(updateTime, 1000);
 
      function addZero(i)
      {
@@ -47,38 +47,46 @@ if(!isset($_COOKIE['deddca_theme']))
      return i;
  	}
 
-     function updateTime(){
-         var nowMS = now.getTime();
-         nowMS += 1000;
-         now.setTime(nowMS);
-         //var clock = document.getElementById('qwe');
+     function localTime(){
+         var time = document.getElementById('displayTime');
          var date = document.getElementById('displayDate');
-         if(date){
-         	// var h = addZero(now.getHours());
-         	// var m = addZero(now.getMinutes());
-         	// var s = addZero(now.getSeconds());
+
+         if(time && date){
+            var timevalue = new Date().toLocaleTimeString('en-US', { hour12: false, hour: "numeric", minute: "numeric", second: "numeric"});
+            timevalue = timevalue.split('');
+            //alert('123');
+
+            var output_time = '';
+            for (i in timevalue) {
+                output_time += '<span>' + timevalue[i] + '</span>';
+            } 
+
          	var datevalue = now.toDateString();
 
-             //clock.innerHTML = "<div class='time'>" + h + ":" + m + ":" + s + "</div>" + "<br>" + "<div class='date'>" + date + "</div>";	//adjust to suit
-             if(date.innerHTML != datevalue){
-                date.innerHTML = datevalue ;
-             }
+             if(time.innerHTML != output_time)
+                time.innerHTML = output_time;
+             if(date.innerHTML != datevalue)
+                date.innerHTML = datevalue;
          }
      } 
  </script>
 
 <script>
 
-function timer() {
+function serverTime() {
     $("#displayTime").load("time.php");
+    $("#displayDate").load("date.php");
 }
 
-setInterval(timer, 500);
 
 $(document).ready(function (){
-    timer();
-    $("#displayDate").load("date.php");
-    document.getElementById('message-remind').style.display = 'block';
+    //serverTime();                    //initialize from server
+    localTime();                       //initialize from local
+
+    //setInterval(serverTime, 500);    //use server time
+    setInterval(localTime, 200);       //use local time
+
+    document.getElementById('message-remind').style.display = 'block';  //display remind message
 });
 
 </script>
